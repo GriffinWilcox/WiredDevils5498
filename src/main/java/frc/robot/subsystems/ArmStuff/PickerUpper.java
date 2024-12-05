@@ -58,17 +58,17 @@ public class PickerUpper extends SubsystemBase implements ArmConstants {
 
     
     public void teleopMove(double y) {
-        if (y > 0.15 && encPos() < 507){
+        if (y > 0.15){
             setMotorSpeed(y);
         }
-        else if (y < -0.15 && encPos() > 0){
+        else if (y < -0.15){
             setMotorSpeed(y);
         }
         else {
             setMotorSpeed(0);
         }
     }
-
+    
     public void setMotorSpeed(double speed){
         moveThing.set(speed / 3);
     }

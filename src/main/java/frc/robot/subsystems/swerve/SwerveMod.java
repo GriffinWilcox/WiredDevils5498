@@ -166,12 +166,179 @@ public class SwerveMod implements SwerveModule
         controller.setReference(velocity, ControlType.kVelocity, 0);
      // Keep It Up :)   
     }
-    ////// USED FOR AUTON ////////
+    
     public void setSpeed2(double s){
-        mDriveMotor.set(s);
+        
+        /////////////// mod 0 ////////////////////
+        if (moduleNumber == 0){
+        double targetMin0 = 148;
+        double targetMax0 = 154;
+        double targetException0 = 151;
+
+        while (getCanCoder().getDegrees() < targetMin0 || (getCanCoder().getDegrees() > targetMax0 && getCanCoder().getDegrees() != targetException0)) {
+            double currentAngle0 = getCanCoder().getDegrees();
+            double distanceToTargetMin0 = Math.abs(currentAngle0 - targetMin0);
+            double distanceToTargetMax0 = Math.abs(currentAngle0 - targetMax0);
+    
+            double distanceToTarget0 = Math.min(distanceToTargetMin0, distanceToTargetMax0);
+    
+            double motorSpeed = 0.1; // Default speed
+    
+            if (distanceToTarget0 < 5) {
+                motorSpeed = 0.025; 
+            } else if (distanceToTarget0 < 10) {
+                motorSpeed = 0.035; 
+            }
+            mAngleMotor.set(motorSpeed);
+        }
+        while (getCanCoder().getDegrees() < 150 || getCanCoder().getDegrees() > 152) {
+            double currentAngle0 = getCanCoder().getDegrees();
+    
+            double distanceToTarget0 = Math.abs(currentAngle0 - 151); 
+    
+            double motorSpeed = 0.025;
+            if (distanceToTarget0 < 1) {
+                motorSpeed = 0.01;
+            } else if (distanceToTarget0 < 2) {
+                motorSpeed = 0.02; 
+            }
+            mAngleMotor.set(motorSpeed);
+        }
+        if (getCanCoder().getDegrees() >= 150 && getCanCoder().getDegrees() <= 152) {
+            mAngleMotor.set(0); // Stop motor
+            relAngleEncoder.setPosition(0); // Reset encoder position
+        }
+        }
+        //////////////////////////////////
+
+        /////////////// mod 1 ////////////////////
+        if (moduleNumber == 1){
+        double targetMin1 = 38;
+        double targetMax1 = 44;
+        double targetException1 = 41;
+
+        while (getCanCoder().getDegrees() < targetMin1 || (getCanCoder().getDegrees() > targetMax1 && getCanCoder().getDegrees() != targetException1)) {
+            double currentAngle1 = getCanCoder().getDegrees();
+            double distanceToTargetMin1 = Math.abs(currentAngle1 - targetMin1);
+            double distanceToTargetMax1 = Math.abs(currentAngle1 - targetMax1);
+    
+            double distanceToTarget1 = Math.min(distanceToTargetMin1, distanceToTargetMax1);
+    
+            double motorSpeed = 0.1; // Default speed
+    
+            if (distanceToTarget1 < 5) {
+                motorSpeed = 0.025; 
+            } else if (distanceToTarget1 < 10) {
+                motorSpeed = 0.035; 
+            }
+            mAngleMotor.set(motorSpeed);
+        }
+        while (getCanCoder().getDegrees() < 40 || getCanCoder().getDegrees() > 42) {
+            double currentAngle1 = getCanCoder().getDegrees();
+    
+            double distanceToTarget1 = Math.abs(currentAngle1 - 41); 
+    
+            double motorSpeed = 0.025;
+            if (distanceToTarget1 < 1) {
+                motorSpeed = 0.01;
+            } else if (distanceToTarget1 < 2) {
+                motorSpeed = 0.02; 
+            }
+            mAngleMotor.set(motorSpeed);
+        }
+        if (getCanCoder().getDegrees() >= 40 && getCanCoder().getDegrees() <= 42) {
+            mAngleMotor.set(0); // Stop motor
+            relAngleEncoder.setPosition(0); // Reset encoder position
+        }
+        }
+        //////////////////////////////////
+
+        /////////////// mod 2 ////////////////////
+        if (moduleNumber == 2){
+        double targetMin2 = 93;
+        double targetMax2 = 99;
+        double targetException2 = 96;
+
+        while (getCanCoder().getDegrees() < targetMin2 || (getCanCoder().getDegrees() > targetMax2 && getCanCoder().getDegrees() != targetException2)) {
+            double currentAngle2 = getCanCoder().getDegrees();
+            double distanceToTargetMin2 = Math.abs(currentAngle2 - targetMin2);
+            double distanceToTargetMax2 = Math.abs(currentAngle2 - targetMax2);
+    
+            double distanceToTarget2 = Math.min(distanceToTargetMin2, distanceToTargetMax2);
+    
+            double motorSpeed = 0.1; // Default speed
+    
+            if (distanceToTarget2 < 5) {
+                motorSpeed = 0.025; 
+            } else if (distanceToTarget2 < 10) {
+                motorSpeed = 0.035; 
+            }
+            mAngleMotor.set(motorSpeed);
+        }
+        while (getCanCoder().getDegrees() < 95 || getCanCoder().getDegrees() > 97) {
+            double currentAngle2 = getCanCoder().getDegrees();
+    
+            double distanceToTarget2 = Math.abs(currentAngle2 - 96); 
+    
+            double motorSpeed = 0.025;
+            if (distanceToTarget2 < 1) {
+                motorSpeed = 0.01;
+            } else if (distanceToTarget2 < 2) {
+                motorSpeed = 0.02; 
+            }
+            mAngleMotor.set(motorSpeed);
+        }
+        if (getCanCoder().getDegrees() >= 95 && getCanCoder().getDegrees() <= 97) {
+            mAngleMotor.set(0); // Stop motor
+            relAngleEncoder.setPosition(0); // Reset encoder position
+        }
+        }
+        //////////////////////////////////
+
+        /////////////// mod 3 ////////////////////
+        if (moduleNumber == 3){
+        double targetMin3 = 118;
+        double targetMax3 = 124;
+        double targetException3 = 121;
+
+        while (getCanCoder().getDegrees() < targetMin3 || (getCanCoder().getDegrees() > targetMax3 && getCanCoder().getDegrees() != targetException3)) {
+            double currentAngle3 = getCanCoder().getDegrees();
+            double distanceToTargetMin3 = Math.abs(currentAngle3 - targetMin3);
+            double distanceToTargetMax3 = Math.abs(currentAngle3 - targetMax3);
+    
+            double distanceToTarget3 = Math.min(distanceToTargetMin3, distanceToTargetMax3);
+    
+            double motorSpeed = 0.1; // Default speed
+    
+            if (distanceToTarget3 < 5) {
+                motorSpeed = 0.025; 
+            } else if (distanceToTarget3 < 10) {
+                motorSpeed = 0.035; 
+            }
+            mAngleMotor.set(motorSpeed);
+        }
+        while (getCanCoder().getDegrees() < 120 || getCanCoder().getDegrees() > 122) {
+            double currentAngle3 = getCanCoder().getDegrees();
+    
+            double distanceToTarget3 = Math.abs(currentAngle3 - 121); 
+    
+            double motorSpeed = 0.025;
+            if (distanceToTarget3 < 1) {
+                motorSpeed = 0.01;
+            } else if (distanceToTarget3 < 2) {
+                motorSpeed = 0.02; 
+            }
+            mAngleMotor.set(motorSpeed);
+        }
+        if (getCanCoder().getDegrees() >= 120 && getCanCoder().getDegrees() <= 122) {
+            mAngleMotor.set(0); // Stop motor
+            relAngleEncoder.setPosition(0); // Reset encoder position
+        }
+        }
+        //////////////////////////////////
+
     }
     
-    //////////////////////////////
     private void setAngle(SwerveModuleState desiredState)
     {
         if(Math.abs(desiredState.speedMetersPerSecond) <= (SwerveConfig.maxSpeed * 0.01)) 

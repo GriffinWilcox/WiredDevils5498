@@ -1,4 +1,4 @@
-package frc.robot.commands;
+/*package frc.robot.commands;
 
 import java.util.function.BooleanSupplier;
 import java.util.function.DoubleSupplier;
@@ -10,12 +10,14 @@ public class ShootRing extends Command{
     private Shooter shooter;
     private DoubleSupplier shoot;
     private BooleanSupplier fast;
+    private BooleanSupplier fast2;
 
-    public ShootRing(Shooter shooter, DoubleSupplier shoot, BooleanSupplier fast){
+    public ShootRing(Shooter shooter, DoubleSupplier shoot, BooleanSupplier fast, BooleanSupplier fast2){
         this.shooter = shooter;
         addRequirements(shooter);
         this.shoot = shoot;
         this.fast = fast;
+        this.fast2 = fast2; 
 
     }
 
@@ -26,7 +28,7 @@ public class ShootRing extends Command{
             shooter.setSpeed(0.2);
         }
         else if (shoot.getAsDouble() > 0.15 && fast.getAsBoolean() == true){
-            shooter.setSpeed(0.5);
+            shooter.setSpeed(0.55);
         }
         else {
             shooter.setSpeed(0);
@@ -39,3 +41,4 @@ public class ShootRing extends Command{
 
 
 }
+*/

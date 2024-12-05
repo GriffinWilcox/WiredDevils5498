@@ -49,7 +49,7 @@ public class RobotContainer {
     /* Upper Buttons */
     //private final JoystickButton shooterSpeedOne = new JoystickButton(upper, XboxController.Button.kA.value);
     private final JoystickButton fastMode = new JoystickButton(upper, XboxController.Button.kB.value);
-    private final JoystickButton pickUpZeroPoint = new JoystickButton(upper, XboxController.Button.kX.value);
+    private final JoystickButton fastMode2 = new JoystickButton(upper, XboxController.Button.kX.value);
     private final JoystickButton pickUpFloorPoint = new JoystickButton(upper, XboxController.Button.kY.value);
     private final JoystickButton actuatorZero = new JoystickButton(upper, XboxController.Button.kLeftBumper.value);
     private final JoystickButton actuatorShoot = new JoystickButton(upper, XboxController.Button.kRightBumper.value);
@@ -59,6 +59,7 @@ public class RobotContainer {
     private final JoystickButton zeroGyro = new JoystickButton(driver, XboxController.Button.kX.value);
     private final JoystickButton robotCentric = new JoystickButton(driver, XboxController.Button.kLeftBumper.value);
     private final JoystickButton dampen = new JoystickButton(driver, XboxController.Button.kRightBumper.value);
+    private final JoystickButton zeroWheels = new JoystickButton(driver, XboxController.Button.kB.value);
     private final POVButton up = new POVButton(driver, 90);
     private final POVButton down = new POVButton(driver, 270);
     private final POVButton right = new POVButton(driver, 180);
@@ -72,7 +73,7 @@ public class RobotContainer {
     private final Climber climb = new Climber();
     private final PoseEstimator s_PoseEstimator = new PoseEstimator();
 
-    private final Command auton = new AutonRun(s_Swerve);
+    //private final Command auton = new AutonRun(s_Swerve);
 
 
     /** The container for the robot. Contains subsystems, OI devices, and commands. */
@@ -88,16 +89,18 @@ public class RobotContainer {
                 () -> -driver.getRawAxis(rotationAxis), 
                 () -> false,
                 () -> dampen.getAsBoolean(),
-                () -> 1 //speed multiplier 
+                () -> 1, //speed multiplier 
+                () -> zeroWheels.getAsBoolean() 
             )
         );
         // Comment these out when testing drive// 
-        
+        /* 
         shooter.setDefaultCommand(
             new ShootRing(
                 shooter,
                 () -> upper.getRawAxis(shooterShoot),
-                () -> fastMode.getAsBoolean()
+                () -> fastMode.getAsBoolean(),
+                () -> fastMode2.getAsBoolean()
             )
         );
         
@@ -107,7 +110,6 @@ public class RobotContainer {
                 () -> upper.getRawAxis(movePickUpArm),
                 () -> upper.getRawAxis(pickUp),
                 () -> pickUpFloorPoint.getAsBoolean(),
-                () -> pickUpZeroPoint.getAsBoolean(),
                 () -> fastMode.getAsBoolean()
             )
         );
@@ -129,6 +131,14 @@ public class RobotContainer {
                 () -> driver.getRawAxis(climbDown2)
             )
         );
+        /*
+        s_Swerve.setDefaultCommand(
+            new ZeroWheels(
+                s_Swerve,
+                () -> zeroWheels.getAsBoolean()
+            )
+        );
+        */
         
 
         
@@ -177,6 +187,6 @@ public class RobotContainer {
      * @return the command to run in autonomous
      */
     public Command getAutonomousCommand() {
-        return auton;
+        return null;
     }
 }

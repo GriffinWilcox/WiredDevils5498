@@ -23,11 +23,13 @@ public class TeleopSwerve extends Command {
     private BooleanSupplier robotCentricSup;
     private BooleanSupplier dampen;
     private DoubleSupplier speedDial;
+    private BooleanSupplier zero;
 
     private PIDController rotationController;
 
-    public TeleopSwerve(Swerve s_Swerve, DoubleSupplier translationSup, DoubleSupplier strafeSup, DoubleSupplier rotationSup, BooleanSupplier robotCentricSup, BooleanSupplier dampen, DoubleSupplier speedDial) {
+    public TeleopSwerve(Swerve s_Swerve, DoubleSupplier translationSup, DoubleSupplier strafeSup, DoubleSupplier rotationSup, BooleanSupplier robotCentricSup, BooleanSupplier dampen, DoubleSupplier speedDial, BooleanSupplier zero) {
         this.s_Swerve = s_Swerve;
+        this.zero = zero;
         addRequirements(s_Swerve);
 
         rotationController = new PIDController(0.01, 0, 0 );
@@ -79,7 +81,10 @@ public class TeleopSwerve extends Command {
                 rotationVal = rotationVal * SwerveConfig.maxAngularVelocity;
                 break;
         }
-        
+        if(zero.getAsBoolean() == true){
+            s_Swerve.setSpeed3();
+        }
+         
 
 
 

@@ -139,6 +139,7 @@ public class Swerve extends SubsystemBase {
         if(SwerveConfig.invertGyro) {
             deg = -deg;
         }
+        
         gyro.reset();
         swerveOdometry.update(getYaw(), getModulePositions());  
     }
@@ -151,22 +152,29 @@ public class Swerve extends SubsystemBase {
         return (SwerveConfig.invertGyro) ? Rotation2d.fromDegrees(360 - gyro.getYaw()) : Rotation2d.fromDegrees(gyro.getYaw());
     }
 
+    public void setSpeed3(){
+        mSwerveMods[0].setSpeed2(0.2);
+        mSwerveMods[1].setSpeed2(0.2);
+        mSwerveMods[2].setSpeed2(0.2);
+        mSwerveMods[3].setSpeed2(0.2);
+    }
+    /* 
     public void autonDrive(double s){
         if (mSwerveMods[0].getModuleNumber() == 0){
-            ((SwerveMod) mSwerveMods[0]).setSpeed2(s);
+            mSwerveMods[0].setSpeed2(s);
         }
         if (mSwerveMods[1].getModuleNumber() == 1){
-            ((SwerveMod) mSwerveMods[1]).setSpeed2(s*-1);
+            mSwerveMods[1].setSpeed2(s*-1);
         }
         if (mSwerveMods[2].getModuleNumber() == 2){
-            ((SwerveMod) mSwerveMods[2]).setSpeed2(s);
+            mSwerveMods[2].setSpeed2(s);
         }
         if (mSwerveMods[3].getModuleNumber() == 3){
-            ((SwerveMod) mSwerveMods[3]).setSpeed2(s*-1);
+            mSwerveMods[3].setSpeed2(s*-1);
         }
 
     }
-
+    */
     @Override
     public void periodic() {
         SmartDashboard.putNumber("yaw", gyro.getYaw());
@@ -175,37 +183,6 @@ public class Swerve extends SubsystemBase {
             SmartDashboard.putNumber("REV Mod " + mod.getModuleNumber() + " Integrated", mod.getPosition().angle.getDegrees());
             SmartDashboard.putNumber("REV Mod " + mod.getModuleNumber() + " Velocity", mod.getState().speedMetersPerSecond);   
             //
-        }
-        
-        if (mSwerveMods[0].getCanCoder().getDegrees() >= 286.1 && mSwerveMods[0].getCanCoder().getDegrees() <= 290.1){//set to actual cancoder zero point
-            lightFl.set(Value.kOn);
-        }   
-        else {
-            lightFl.set(Value.kOff);
-        }
-            //
-            
-        if (mSwerveMods[1].getCanCoder().getDegrees() >= 39.6 && mSwerveMods[1].getCanCoder().getDegrees() <= 43.6){//set to actual cancoder zero point
-            lightFr.set(Value.kOn);
-        }
-        else {
-            lightFr.set(Value.kOff);
-        }
-            //
-        
-        if (mSwerveMods[2].getCanCoder().getDegrees() >= 94.5 && mSwerveMods[2].getCanCoder().getDegrees() <= 98.5){//set to actual cancoder zero point
-            lightBl.set(Value.kOn);
-        }
-        else {
-            lightBl.set(Value.kOff);
-        }
-            //
-            
-        if (mSwerveMods[3].getCanCoder().getDegrees() >= 119.9 && mSwerveMods[3].getCanCoder().getDegrees() <= 123.9){//set to actual cancoder zero point
-            lightBr.set(Value.kOn);
-        }
-        else {
-            lightBr.set(Value.kOff);
         }
     }
 }

@@ -21,11 +21,11 @@ public class Shooter extends SubsystemBase implements ArmConstants  {
         ringShooter1.set(s);
         ringShooter2.set(s * -1);
     }
-
+    /* 
     public void getVelo(){
         
     }
-    
+    */
 
 
     

@@ -1,4 +1,4 @@
-package frc.robot.commands;
+/*package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -17,14 +17,14 @@ public class PickerUp extends Command {
     private BooleanSupplier fast;
 
 
-    public PickerUp(PickerUpper armExtension, DoubleSupplier moveArm, DoubleSupplier usePickUp, BooleanSupplier floorPos, BooleanSupplier zeroPos, BooleanSupplier fast) {
+    public PickerUp(PickerUpper armExtension, DoubleSupplier moveArm, DoubleSupplier usePickUp, BooleanSupplier floorPos, BooleanSupplier fast) {
 		this.armExtension = armExtension;
         addRequirements(armExtension);
 
         this.moveArm = moveArm;
         this.usePickUp = usePickUp;
         this.floorPos = floorPos;
-        this.zeroPos = zeroPos;
+        
         this.fast = fast;
 		
 	}
@@ -47,10 +47,11 @@ public class PickerUp extends Command {
         if (floorPos.getAsBoolean()){
             armExtension.setExtensionPos(500);
         } //This is wild my dude, so crazy
-        if (zeroPos.getAsBoolean()){
+        /*if (zeroPos.getAsBoolean()){
             armExtension.setExtensionPos(5);
         }
-        
+        */
+      /*   
         SmartDashboard.putNumber("Pick Up Arm Enc", armExtension.encPos());
         SmartDashboard.putNumber("suckenc", armExtension.suckEnc());
 	}
@@ -66,3 +67,4 @@ public class PickerUp extends Command {
 	}    
 }
 
+*/

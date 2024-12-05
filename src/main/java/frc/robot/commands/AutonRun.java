@@ -1,4 +1,4 @@
-package frc.robot.commands;
+/*package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.swerve.Swerve;
@@ -17,13 +17,13 @@ public class AutonRun extends Command {
 
     @Override
     public void execute(){
-        timer.start();
+        //timer.start();
         swerve.autonDrive(0.5);
     }
     
-    @Override
+    @Override   
     public boolean isFinished() {
-        if(timer.get() > 1){
+        if(timer.get() > 5){
             isDriveFinished = true;
         }
         else {
@@ -38,3 +38,4 @@ public class AutonRun extends Command {
         timer.stop();
     }
 }
+*/
